@@ -26,7 +26,9 @@ spec:
           - name: SNAPSHOT
             value: $(params.SNAPSHOT)
           script: |
-            dnf -y install jq
+            dnf -y install jq pip
+            pip install --user tft-cli
+            testing-farm request --hardware memory='>= 8 GB' --hardware cpu.processors='>= 4' --compose RHEL-9.6.0-Nightly --git-url https://pkgs.devel.redhat.com/git/tests/ISV --git-ref master --plan /plans/isvqe-virtual  --test /ISV-SYBASE/ASE
             echo -e "Example test task for the Snapshot:\n ${SNAPSHOT}"
             # Run custom tests for the given Snapshot here
             # After the tests finish, record the overall result in the RESULT variable
