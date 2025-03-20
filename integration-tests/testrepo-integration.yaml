@@ -36,7 +36,8 @@ spec:
               #!/usr/bin/bash
               set -euxo pipefail
 
-              testing-farm request --hardware memory='>= 8 GB' --compose RHEL-9.6.0-Nightly --git-url https://pkgs.devel.redhat.com/git/tests/ISV --git-ref master  --environment "DB2VERSION=12.1.1" --plan /plans/isvqe-virtual --test /dvdstore-db2/Certification
+              find / -name testing-farm
+              ~/.local/bin/testing-farm request --hardware memory='>= 8 GB' --compose RHEL-9.6.0-Nightly --git-url https://pkgs.devel.redhat.com/git/tests/ISV --git-ref master  --environment "DB2VERSION=12.1.1" --plan /plans/isvqe-virtual --test /dvdstore-db2/Certification
               
               IMAGE=$(echo "$SNAPSHOT" | jq -r '.components[0].containerImage')
               echo "Extracted image: $IMAGE"
