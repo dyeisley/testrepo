@@ -38,7 +38,6 @@ spec:
 
               IMAGE=$(echo "$SNAPSHOT" | jq -r '.components[0].containerImage')
               echo "Extracted image: $IMAGE"
-              ls
               #kubectl delete job --ignore-not-found test-hello -n $NAMESPACE
               #kubectl delete pods --ignore-not-found -l job-name=test-hello -n $NAMESPACE
               kubectl create job test-hello -n $NAMESPACE --image=$IMAGE
@@ -46,3 +45,5 @@ spec:
               LOGS=$(kubectl logs -l job-name=test-hello -n $NAMESPACE)
               kubectl delete job --ignore-not-found test-hello -n $NAMESPACE
               echo $LOGS | grep "hello world"
+              dnf -y install beakerlib-redhat
+              
