@@ -45,4 +45,4 @@ spec:
               #LOGS=$(kubectl logs -l job-name=test-hello -n $NAMESPACE)
               #kubectl delete job --ignore-not-found test-hello -n $NAMESPACE
               #echo $LOGS | grep "hello world"
-              dnf repolist
+              ls
